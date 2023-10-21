@@ -38,6 +38,9 @@ switch ($rota) {
         break;
 }
 
+// carregamento de scripts permanentes
+require_once __DIR__ . "/../inc/config.php";
+
 // apresentação da página
 require_once __DIR__ . "/../inc/header.php";
 require_once __DIR__ . "/../scripts/$script";
