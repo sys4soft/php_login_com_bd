@@ -35,8 +35,13 @@ switch ($rota) {
     case 'login':
         $script .= 'login.php';
         break;
+
     case 'login_submit':
         $script .= 'login_submit.php';
+        break;
+
+    case 'logout':
+        $script .= 'logout.php';
         break;
 
     case 'home':
