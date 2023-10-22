@@ -10,7 +10,7 @@ $rotas_permitidas = require_once __DIR__ . '/../inc/rotas.php';
 $rota = $_GET['rota'] ?? 'home';
 
 // verifica se o usuario está logado
-if (!isset($_SESSION['usuario'])) {
+if (!isset($_SESSION['usuario']) && $rota !== 'login_submit') {
     $rota = 'login';
 }
 
@@ -26,6 +26,7 @@ if (!in_array($rota, $rotas_permitidas)) {
 
 // preparação da página
 $script = null;
+
 switch ($rota) {
     case '404':
         $script .= '404.php';

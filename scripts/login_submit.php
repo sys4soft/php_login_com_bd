@@ -28,17 +28,18 @@ $result = $db->query($sql, $params);
 
 // verifica se aconteceu um erro
 if($result['status'] === 'error') {
-    header('Location: /?rota=404');
+    
+    header('Location: index.php?rota=404');
     exit;
 }
 
 // verifica se o usuário existe
 if(count($result['data']) === 0) {
-
+    
     // erro na sessão
     $_SESSION['erro'] = 'Usuário ou senha inválidos';
     
-    header('Location: /?rota=login');
+    header('Location: index.php?rota=login');
     exit;
 }
 
@@ -48,7 +49,7 @@ if(!password_verify($senha, $result['data'][0]->senha)) {
     // erro na sessão
     $_SESSION['erro'] = 'Usuário ou senha inválidos';
     
-    header('Location: /?rota=login');
+    header('Location: index.php?rota=login');
     exit;
 }
 
@@ -56,4 +57,4 @@ if(!password_verify($senha, $result['data'][0]->senha)) {
 $_SESSION['usuario'] = $result['data'][0];
 
 // redireciona para a página inicial
-header('Location: /?rota=home');
+header('Location: index.php?rota=home');
